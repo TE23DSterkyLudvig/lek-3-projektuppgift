@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+
+public class App {
+    public static void main(String[] args) throws Exception {
+    int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int birthdate = 0;
+    double PlacePrice = 299.90;
+    Scanner tb = new Scanner(System.in);
+    int choice = 0;
+    int bookingChoice = 0;
+
+
+    System.out.println("1.Book place");
+    System.out.println("2.Press to see how many onoccupied seats");
+    System.out.println("3.Press to see how much money has been earned");
+    System.out.println("4.Turn of program");
+
+   choice = choice(choice, tb);
+
+    if(choice == 1){
+
+        System.out.println("You chose to book a seat.");
+      
+        while (true) {
+            
+        
+        try{
+          System.out.print("Which spot do you want, 1 to 20:");  
+          bookingChoice = tb.nextInt();
+          if(bookingChoice < 1 || bookingChoice > 20){
+            System.out.println("too much or to little.");
+          }
+        }
+
+        }
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+    public static int choice (int choice, Scanner tb){
+
+    while(true){
+        try{
+        System.out.print("What will be your choice:");
+        choice = tb.nextInt();
+        if(choice < 1 || choice > 4){
+            System.out.println("between 1 and 4");
+            tb.nextLine();
+            continue;
+        }
+        break;
+        }
+        catch(Exception e){
+        System.out.println("Not charachters");
+        tb.nextLine();
+        continue;
+        }
+    
+        }
+        return choice;
+}
+}
+
