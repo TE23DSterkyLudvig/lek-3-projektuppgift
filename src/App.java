@@ -5,59 +5,65 @@ public class App {
     public static void main(String[] args) throws Exception {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
       int birthdate = 0;
-      double PlacePrice = 299.90;
+      double placePrice = 299.90;
+      float sum = 0;
       Scanner tb = new Scanner(System.in);
       int choice = 0;
       int bookingChoice = 0;
 
     
-     while (true) {
+      while (true) {
       
-      System.out.println("1.Book place");
-      System.out.println("2.Press to see how many onoccupied seats");
-      System.out.println("3.Press to see how much money has been earned");
-      System.out.println("4.Turn of program");
+        System.out.println("1.Book place");
+        System.out.println("2.Press to see how many onoccupied seats");
+        System.out.println("3.Press to see how much money has been earned");
+        System.out.println("4.Turn of program");
 
-      choice = choice(choice, tb);
+        choice = choice(choice, tb);
 
-  
-  
-  
-      if(choice == 1){
+    
+    
+    
+        if(choice == 1){
 
-        bookingChoice = bus(bookingChoice, tb) - 1;
+          bookingChoice = bus(bookingChoice, tb) - 1;
 
-        if (passagerare[bookingChoice] == 0){
+          if (passagerare[bookingChoice] == 0){
 
-      while(true){
-        try{
-          System.out.print("Write your birthinformation, YYYYMMDD:");
-          passagerare[bookingChoice] = tb.nextInt();
-          if (passagerare[bookingChoice] > 99991231) {
-  
+        while(true){
+          try{
+            System.out.print("Write your birthinformation, YYYYMMDD:");
+            passagerare[bookingChoice] = tb.nextInt();
+            if (passagerare[bookingChoice] > 99991231 || passagerare[bookingChoice] < 00010101 ) {
+                System.out.println("Wrong date order");
+                continue;
+            }
+            else{
+                System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
+                break;
+            }
+            
           }
-          break;
-        }
-        catch(Exception e){
-          System.out.println("No characthers");
-          tb.nextLine();
-          continue;
-        }
-      }
-
-
-
-      }
-        else if( passagerare[bookingChoice] > 0){
-          System.out.println("Place is taken.");
-          Thread.sleep(3000);
+          catch(Exception e){
+            System.out.println("No characthers");
+            tb.nextLine();
+            continue;
+          }
         }
 
+
+
+        }
+          else if( passagerare[bookingChoice] > 0){
+            System.out.println("Place is taken.");
+            Thread.sleep(3000);
+          }
+
+        }
+
       }
 
-    }
-
- }
+  }
 
 
 
@@ -103,20 +109,20 @@ public class App {
           }
           else{
             break;
+          }
         }
-    }
       
-      catch(Exception e){
-        System.out.println("No charachters.");
-        tb.nextLine();
-        continue;
+        catch(Exception e){
+          System.out.println("No charachters.");
+          tb.nextLine();
+          continue;
+        }
+
+
+
       }
-
-
-
+        return bookingChoice;
     }
-    return bookingChoice;
-}
 
 }
 
