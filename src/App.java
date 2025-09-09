@@ -4,14 +4,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-      String placenumber [] = {"","","","","","","","","","","","","","","","","","","",""};
-      int birthdate = 0;
+      String placenumber [] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
       double placePrice = 299.90;
       float sum = 0;
       Scanner tb = new Scanner(System.in);
       int choice = 0;
       int bookingChoice = 0;
       int takenSeats = 0;
+      int bookingNumber = 0;
 
     
       while (true) {
@@ -20,10 +20,11 @@ public class App {
         System.out.println("2.Press to see how many onoccupied seats");
         System.out.println("3.Press to see how much money has been earned");
         System.out.println("4.Turn of program");
+        System.out.println("5.Find booked seat");
 
         choice = choice(choice, tb);
 
-    
+        
     
     
         if(choice == 1){
@@ -118,19 +119,40 @@ public class App {
 
           System.out.println("You chose to close the program.");
           Thread.sleep(3000);
-          System.exit(0);
+          
 
           System.out.println("""
 
 
           """);
+          break;
+        }
+        
+        else if (choice == 5){
+          try {
+            System.out.print("To find your booking we need your bookingnumber:");
+          bookingNumber = tb.nextInt();
+          if (bookingNumber > 20251231 || bookingNumber < 00010101) {
+              s
+          }
+            
+          
+          for (int index = 0; index < passagerare.length; index++) {
+            if (bookingNumber == passagerare[index]) {
+              System.out.println("Your place is " + index);
+            }
+          }
+        
+          } catch (Exception e) {
+            
+          }
 
         }
-
         
 
+      
       }
-        
+      tb.close();  
 
 
 
