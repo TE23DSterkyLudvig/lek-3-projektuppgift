@@ -4,12 +4,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+      String placenumber [] = {"","","","","","","","","","","","","","","","","","","",""};
       int birthdate = 0;
       double placePrice = 299.90;
       float sum = 0;
       Scanner tb = new Scanner(System.in);
       int choice = 0;
       int bookingChoice = 0;
+      int takenSeats = 0;
 
     
       while (true) {
@@ -25,6 +27,10 @@ public class App {
     
     
         if(choice == 1){
+          System.out.println("""
+
+
+          """);
 
           bookingChoice = bus(bookingChoice, tb) - 1;
 
@@ -34,12 +40,16 @@ public class App {
           try{
             System.out.print("Write your birthinformation, YYYYMMDD:");
             passagerare[bookingChoice] = tb.nextInt();
-            if (passagerare[bookingChoice] > 99991231 || passagerare[bookingChoice] < 00010101 ) {
+            if (passagerare[bookingChoice] > 20251231 || passagerare[bookingChoice] < 00010101 ) {
                 System.out.println("Wrong date order");
                 continue;
             }
             else{
                 System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
+                sum += placePrice;
+                if( passagerare[bookingChoice] > 0){
+                  placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
+                }
                 break;
             }
             
@@ -58,10 +68,72 @@ public class App {
             System.out.println("Place is taken.");
             Thread.sleep(3000);
           }
+          System.out.println("""
+
+
+          """);
 
         }
 
+        else if(choice == 2){
+          System.out.println("""
+
+
+          """);
+
+          takenSeats = occupiedSeats(takenSeats, passagerare);
+
+          System.out.println("Number of occupied seats:" + takenSeats);
+
+          Thread.sleep(3000);
+
+          System.out.println("""
+
+
+          """);
+
+        }
+
+        else if(choice == 3){
+          System.out.println("""
+
+
+              """);
+
+          System.out.println("The sum of all the ticketscosts:" + sum);
+          Thread.sleep(3000);
+
+
+          System.out.println("""
+
+
+          """);
+        }
+
+        else if(choice == 4){
+          System.out.println("""
+
+
+          """);
+
+          System.out.println("You chose to close the program.");
+          Thread.sleep(3000);
+          System.exit(0);
+
+          System.out.println("""
+
+
+          """);
+
+        }
+
+        
+
       }
+        
+
+
+
 
   }
 
@@ -124,5 +196,22 @@ public class App {
         return bookingChoice;
     }
 
+    public static int occupiedSeats (int takenSeats, int passagerare []) {
+
+      for (int index = 0; index < passagerare.length; index++) {
+        
+        if(passagerare[index] > 0){
+          takenSeats ++ ;
+        }
+
+      }
+
+      return takenSeats;
+
+    }
+
+
+
+    
 }
 
