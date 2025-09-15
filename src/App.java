@@ -27,7 +27,7 @@ public class App {
         
     
     
-        if(choice == 1){
+        if (choice == 1){
           System.out.println("""
 
 
@@ -76,7 +76,8 @@ public class App {
 
         }
 
-        else if(choice == 2){
+        else if (choice == 2)
+        {
           System.out.println("""
 
 
@@ -95,7 +96,8 @@ public class App {
 
         }
 
-        else if(choice == 3){
+        else if (choice == 3)
+        {
           System.out.println("""
 
 
@@ -111,7 +113,8 @@ public class App {
           """);
         }
 
-        else if(choice == 4){
+        else if (choice == 4)
+        {
           System.out.println("""
 
 
@@ -128,29 +131,102 @@ public class App {
           break;
         }
         
-        else if (choice == 5){
-          try {
-            System.out.print("To find your booking we need your bookingnumber:");
-          bookingNumber = tb.nextInt();
-          if (bookingNumber > 20251231 || bookingNumber < 00010101) {
-              
-          }
+        else if (choice == 5)
+        {
+
+          while (true) {
             
           
-          for (int index = 0; index < passagerare.length; index++) {
-            if (bookingNumber == passagerare[index]) {
+            try {
+              System.out.print("To find your booking we need your bookingnumber:");
+              bookingNumber = tb.nextInt();
+              if (bookingNumber > 20251231 || bookingNumber < 00010101) {
+                  System.out.println("Too much or too little");
+                  tb.nextLine();
+                  continue;
+              }
+            
+              
+              else
+              {
+                break;
+                
+              }
+          
+            } 
+            catch (Exception e) 
+            {
+              System.out.println("Not charachters");
+              tb.nextLine();
+              Thread.sleep(3000);
+            }
+
+          }
+          for (int index = 0; index < passagerare.length; index++) 
+          {
+            if (bookingNumber == passagerare[index]) 
+            {
               System.out.println("Your place is " + index);
+              tb.nextLine();
+            }
+            else if(bookingNumber != passagerare[index])
+            {
+              System.out.println("This place does not exist");
+              tb.nextLine();
+              break;
             }
           }
-        
-          } catch (Exception e) {
+          Thread.sleep(3000);
+      }
+
+        else if (choice == 6)
+        {
+          while (true) {
             
+          
+            try {
+              System.out.print("To find your booking we need your bookingnumber:");
+              bookingNumber = tb.nextInt();
+              if (bookingNumber > 20251231 || bookingNumber < 00010101) {
+                  System.out.println("Too much or too little");
+                  tb.nextLine();
+                  continue;
+              }
+            
+              
+              else
+              {
+                break;
+                
+              }
+          
+            } 
+            catch (Exception e) 
+            {
+              System.out.println("Not charachters");
+              tb.nextLine();
+              Thread.sleep(3000);
+            }
+
           }
-
+          for (int index = 0; index < passagerare.length; index++) 
+          {
+            if (bookingNumber == passagerare[index]) 
+            {
+              System.out.println("Removing place " + index);
+              passagerare[index] = 0;
+              tb.nextLine();
+            }
+            else if(bookingNumber != passagerare[index])
+            {
+              System.out.println("This place does not exist");
+              tb.nextLine();
+              break;
+            }
+          }
+          Thread.sleep(3000);
         }
-        
 
-      
       }
       tb.close();  
 
@@ -168,8 +244,8 @@ public class App {
         try{
           System.out.print("What will be your choice:");
           choice = tb.nextInt();
-          if(choice < 1 || choice > 4){
-            System.out.println("between 1 and 4");
+          if(choice < 1 || choice > 6){
+            System.out.println("between 1 and 6");
             tb.nextLine();
             continue;
           }
