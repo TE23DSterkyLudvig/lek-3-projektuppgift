@@ -21,6 +21,7 @@ public class App {
         System.out.println("3.Press to see how much money has been earned");
         System.out.println("4.Turn of program");
         System.out.println("5.Find booked seat");
+        System.out.println("6.Remove booked seat");
 
         choice = choice(choice, tb);
 
@@ -166,14 +167,15 @@ public class App {
           {
             if (bookingNumber == passagerare[index]) 
             {
+              index +=1;
               System.out.println("Your place is " + index);
-              tb.nextLine();
-            }
-            else if(bookingNumber != passagerare[index])
-            {
-              System.out.println("This place does not exist");
+              index -=1;
               tb.nextLine();
               break;
+            }
+            else if(index == 19)
+            {
+              System.out.println("Place does not exist");
             }
           }
           Thread.sleep(3000);
@@ -197,7 +199,6 @@ public class App {
               else
               {
                 break;
-                
               }
           
             } 
@@ -213,17 +214,20 @@ public class App {
           {
             if (bookingNumber == passagerare[index]) 
             {
+              index += 1;
               System.out.println("Removing place " + index);
+              index -= 1;
               passagerare[index] = 0;
-              tb.nextLine();
-            }
-            else if(bookingNumber != passagerare[index])
-            {
-              System.out.println("This place does not exist");
               tb.nextLine();
               break;
             }
+            else if(index == 19)
+            {
+              System.out.println("Place does not exist");
+            }
           }
+          
+
           Thread.sleep(3000);
         }
 
