@@ -5,7 +5,9 @@ public class App {
     public static void main(String[] args) throws Exception {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
       String placenumber [] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
-      double placePrice = 299.90;
+      String names [] = {"","","","","","","","","","","","","","","","","","","",""};
+      final double placePrice = 299.90;
+      final double placePriceChild = 149.90;
       float sum = 0;
       Scanner tb = new Scanner(System.in);
       int choice = 0;
@@ -36,23 +38,19 @@ public class App {
 
           bookingChoice = bus(bookingChoice, tb) - 1;
 
-          if (passagerare[bookingChoice] == 0){
+      if (passagerare[bookingChoice] == 0){
 
         while(true){
           try{
             System.out.print("Write your birthinformation, YYYYMMDD:");
             passagerare[bookingChoice] = tb.nextInt();
-            if (passagerare[bookingChoice] > 20251231 || passagerare[bookingChoice] < 00010101 ) {
+            if (passagerare[bookingChoice] > 20251231 || passagerare[bookingChoice] < 19250000 ) {
                 System.out.println("Wrong date order");
                 continue;
             }
-            else{
-                System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
-                sum += placePrice;
-                if( passagerare[bookingChoice] > 0){
-                  placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
-                }
-                break;
+            else
+            {
+              break;
             }
             
           }
@@ -63,9 +61,36 @@ public class App {
           }
         }
 
+        while (true) {
+          try
+          {
+            
+          }
 
 
         }
+
+
+        if (passagerare[bookingChoice] > 20071231) 
+        {
+            System.out.println("You pay " + placePriceChild + " crowns for a bus ticket. ");
+            sum += placePriceChild;
+            if( passagerare[bookingChoice] > 0){
+              placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
+            }
+            Thread.sleep(3000);
+        }
+        else if(passagerare[bookingChoice] < 20071231 )
+        {
+          System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
+          sum += placePrice;
+          if( passagerare[bookingChoice] > 0){
+            placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
+          }
+        }
+
+
+      }
           else if( passagerare[bookingChoice] > 0){
             System.out.println("Place is taken.");
             Thread.sleep(3000);
