@@ -6,6 +6,7 @@ public class App {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
       String placenumber [] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
       String names [] = {"","","","","","","","","","","","","","","","","","","",""};
+      String name ="";
       final double placePrice = 299.90;
       final double placePriceChild = 149.90;
       float sum = 0;
@@ -14,6 +15,9 @@ public class App {
       int bookingChoice = 0;
       int takenSeats = 0;
       int bookingNumber = 0;
+      String windowChoice;
+      int window = 0;
+      
 
     
       while (true) {
@@ -36,7 +40,47 @@ public class App {
 
           """);
 
-          bookingChoice = bus(bookingChoice, tb) - 1;
+          tb.nextLine();
+          while(true)
+          {
+            try
+            {
+              System.out.println("Would you like a window seat");
+              windowChoice = tb.nextLine();
+              if (windowChoice.equalsIgnoreCase("yes")) 
+              {
+                break;
+              }
+              else if(windowChoice.equalsIgnoreCase("no"))
+              {
+                break;
+              }
+              else
+              {
+                System.out.println("yes or no");
+                tb.nextLine();
+                continue;
+              }
+              
+            }
+            catch(Exception e)
+            {
+              System.out.println("No numbers");
+              tb.nextLine();
+              continue;
+            }
+          }
+
+
+          if (windowChoice.equalsIgnoreCase("no"))
+          {
+            bookingChoice = bus(bookingChoice, tb) - 1;
+          }
+          else if(windowChoice.equalsIgnoreCase("yes"))
+          {
+            windowSeats(bookingChoice, passagerare, window);
+          }
+
 
       if (passagerare[bookingChoice] == 0){
 
@@ -64,11 +108,18 @@ public class App {
         while (true) {
           try
           {
-            
+            System.out.print("What is your name:");
+            name = tb.nextLine();
+            break;
           }
-
-
+          catch(Exception e)
+          {
+            System.out.println("No numbers");
+            tb.nextLine();
+            continue;
+          }
         }
+        names[bookingChoice] = name;
 
 
         if (passagerare[bookingChoice] > 20071231) 
@@ -337,7 +388,28 @@ public class App {
 
     }
 
-
+    public static int windowSeats (int bookingChoice, int[]passagerare, int window)
+    {
+      for (int index = 1; index < 17; index += 4) 
+      {
+        if(passagerare[index] == 0)
+        {
+          System.out.println("\n Window seat " + passagerare[index] + " chosen");
+          passagerare[index] = window;
+          break;
+        }
+      }
+      for (int index = 4; index < 20; index += 4) 
+      {
+        if(passagerare[index] == 0)
+        {
+          System.out.println("\n Window seat " + passagerare[index] + " chosen");
+          passagerare[index] = window;
+          break;
+        }
+      }
+        return window;
+    }
 
     
 }
