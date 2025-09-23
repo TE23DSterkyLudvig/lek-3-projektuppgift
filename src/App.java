@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
       int passagerare[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-      String placenumber [] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
+      String passagerareString [] = {"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20"};
       String names [] = {"","","","","","","","","","","","","","","","","","","",""};
       String name ="";
       final double placePrice = 299.90;
@@ -21,6 +21,12 @@ public class App {
 
     
       while (true) {
+       
+       System.out.println( "├"+passagerareString[0]+"─"+passagerareString[1]+"─ ─"+passagerareString[2]+"─"+passagerareString[3]+"┤\r\n" + 
+        "├"+passagerareString[4]+"─"+passagerareString[5]+"─ ─"+passagerareString[6]+"─"+passagerareString[7]+"┤\r\n" + 
+        "├"+passagerareString[8]+"─"+passagerareString[9]+"─ ─"+passagerareString[10]+"─"+passagerareString[11]+"┤\r\n" + //Chart for visuals
+        "├"+passagerareString[12]+"─"+passagerareString[13]+"─ ─"+passagerareString[14]+"─"+passagerareString[15]+"┤\r\n" + 
+        "├"+passagerareString[16]+"─"+passagerareString[17]+"─ ─"+passagerareString[18]+"─"+passagerareString[19]+"┤\r\n");
       
         System.out.println("1.Book place");
         System.out.println("2.Press to see how many onoccupied seats");
@@ -126,24 +132,19 @@ public class App {
               {
                   System.out.println("You pay " + placePriceChild + " crowns for a bus ticket. ");
                   sum += placePriceChild;
-                  if( passagerare[window] > 0){
-                    placenumber[window] = Integer.toString(passagerare[bookingChoice]);
-                  }
                   Thread.sleep(3000);
               }
               else if(passagerare[window] < 20071231 )
               {
                 System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
                 sum += placePrice;
-                if( passagerare[window] > 0){
-                  placenumber[window] = Integer.toString(passagerare[window]);
-                }
+
               }
 
               continue;
             }
                 else if( window == 0){
-                  System.out.println("No window seats.");
+                  System.out.println("No window passagerareString.");
                   Thread.sleep(3000);
                 }
                 System.out.println("""
@@ -201,18 +202,12 @@ public class App {
         {
             System.out.println("You pay " + placePriceChild + " crowns for a bus ticket. ");
             sum += placePriceChild;
-            if( passagerare[bookingChoice] > 0){
-              placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
-            }
             Thread.sleep(3000);
         }
         else if(passagerare[bookingChoice] < 20071231 )
         {
           System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
           sum += placePrice;
-          if( passagerare[bookingChoice] > 0){
-            placenumber[bookingChoice] = Integer.toString(passagerare[bookingChoice]);
-          }
         }
 
 
@@ -238,7 +233,7 @@ public class App {
 
           takenSeats = occupiedSeats(takenSeats, passagerare);
 
-          System.out.println("Number of occupied seats:" + takenSeats);
+          System.out.println("Number of occupied passagerareString:" + takenSeats);
 
           Thread.sleep(3000);
 
