@@ -142,8 +142,8 @@ public class App {
 
               continue;
             }
-                else if( passagerare[window] > 0){
-                  System.out.println("Place is taken.");
+                else if( window == 0){
+                  System.out.println("No window seats.");
                   Thread.sleep(3000);
                 }
                 System.out.println("""
@@ -229,7 +229,6 @@ public class App {
 
         }
       
-
         else if (choice == 2)
         {
           System.out.println("""
@@ -468,35 +467,28 @@ public class App {
 
     public static int windowSeats (int bookingChoice, int[]passagerare, int window)
     {
-      for (int index = 1; index < 17; index += 4) 
+      for (int index = 0; index < 16; index += 4) 
       {
         if(passagerare[index] == 0)
         {
+          index ++;
           System.out.println("\nWindow seat " + index + " chosen");
           window = index;
           return window;
         }
-        else
-        {
-          System.out.println("No seats on left side.");
-          break;
-        }
       }
-      for (int index = 4; index < 20; index += 4) 
+      for (int index = 3; index < 19; index += 4) 
       {
         if(passagerare[index] == 0)
         {
+          index ++;
           System.out.println("\nWindow seat " + index + " chosen");
           window = index;
           return window;
         }
-        else
-        {
-          System.out.println("No seats on right side");
-          break;
-        }
       }
-      return window;
+      return 0;
+      
     }
 
     
