@@ -78,8 +78,82 @@ public class App {
           }
           else if(windowChoice.equalsIgnoreCase("yes"))
           {
-            windowSeats(bookingChoice, passagerare, window);
-          }
+            window = windowSeats(bookingChoice, passagerare, window);
+            window -= 1;
+
+            if(passagerare[window] == 0)
+            {
+              while(true){
+                try{
+                  System.out.print("Write your birthinformation, YYYYMMDD:");
+                  passagerare[window] = tb.nextInt();
+                  if (passagerare[window] > 20251231 || passagerare[window] < 19250000 ) {
+                      System.out.println("Wrong date order");
+                      continue;
+                  }
+                  else
+                  {
+                    tb.nextLine();
+                    break;
+                  }
+                  
+                }
+                catch(Exception e){
+                  System.out.println("No characthers");
+                  tb.nextLine();
+                  continue;
+                }
+              }
+      
+              while (true) {
+                try
+                {
+                  System.out.print("What is your name:");
+                  name = tb.nextLine();
+                  break;
+                }
+                catch(Exception e)
+                {
+                  System.out.println("No numbers");
+                  tb.nextLine();
+                  continue;
+                }
+              }
+              names[window] = name;
+      
+      
+              if (passagerare[window] > 20071231) 
+              {
+                  System.out.println("You pay " + placePriceChild + " crowns for a bus ticket. ");
+                  sum += placePriceChild;
+                  if( passagerare[window] > 0){
+                    placenumber[window] = Integer.toString(passagerare[bookingChoice]);
+                  }
+                  Thread.sleep(3000);
+              }
+              else if(passagerare[window] < 20071231 )
+              {
+                System.out.println("You spend " + placePrice +" dollars on the bus ticket.");
+                sum += placePrice;
+                if( passagerare[window] > 0){
+                  placenumber[window] = Integer.toString(passagerare[window]);
+                }
+              }
+
+              continue;
+            }
+                else if( passagerare[window] > 0){
+                  System.out.println("Place is taken.");
+                  Thread.sleep(3000);
+                }
+                System.out.println("""
+      
+      
+                """);
+                continue;
+            }
+            
+          
 
 
       if (passagerare[bookingChoice] == 0){
@@ -94,6 +168,7 @@ public class App {
             }
             else
             {
+              tb.nextLine();
               break;
             }
             
@@ -142,7 +217,8 @@ public class App {
 
 
       }
-          else if( passagerare[bookingChoice] > 0){
+          else if( passagerare[bookingChoice] > 0)
+          {
             System.out.println("Place is taken.");
             Thread.sleep(3000);
           }
@@ -152,6 +228,7 @@ public class App {
           """);
 
         }
+      
 
         else if (choice == 2)
         {
@@ -318,6 +395,7 @@ public class App {
 
 
 
+
     public static int choice (int choice, Scanner tb){
 
       while(true){
@@ -394,8 +472,13 @@ public class App {
       {
         if(passagerare[index] == 0)
         {
-          System.out.println("\n Window seat " + passagerare[index] + " chosen");
-          passagerare[index] = window;
+          System.out.println("\nWindow seat " + index + " chosen");
+          window = index;
+          return window;
+        }
+        else
+        {
+          System.out.println("No seats on left side.");
           break;
         }
       }
@@ -403,12 +486,17 @@ public class App {
       {
         if(passagerare[index] == 0)
         {
-          System.out.println("\n Window seat " + passagerare[index] + " chosen");
-          passagerare[index] = window;
+          System.out.println("\nWindow seat " + index + " chosen");
+          window = index;
+          return window;
+        }
+        else
+        {
+          System.out.println("No seats on right side");
           break;
         }
       }
-        return window;
+      return window;
     }
 
     
